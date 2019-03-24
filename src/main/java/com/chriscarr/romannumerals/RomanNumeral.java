@@ -1,16 +1,16 @@
 package com.chriscarr.romannumerals;
 
-import com.frequal.romannumerals.Converter;
+import com.github.fracpete.romannumerals4j.RomanNumeralFormat;
 
 public class RomanNumeral implements RomanNumeralInterface {
 	
-	Converter converter; //library allows for public use with GNU license. See: http://frequal.com/RomanNumerals/index.html
+	RomanNumeralFormat converter; //library allows for public use with GNU license. See: http://frequal.com/RomanNumerals/index.html
 	int minRange;
 	int maxRange;
 	
 	RomanNumeral(int minRange, int maxRange)
 	{
-		this.converter = new Converter();
+		this.converter = new RomanNumeralFormat();
 		this.minRange = minRange;
 		this.maxRange = maxRange;
 	}
@@ -23,7 +23,7 @@ public class RomanNumeral implements RomanNumeralInterface {
 		
 		try
 		{
-			romanNumerals = this.converter.toRomanNumerals(number);
+			romanNumerals = this.converter.format(number);
 		}
 		catch(Exception e)
 		{

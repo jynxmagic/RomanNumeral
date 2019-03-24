@@ -1,7 +1,5 @@
 package com.chriscarr.romannumerals;
 
-import static org.junit.Assert.*;
-
 import java.io.FileReader;
 import java.io.Reader;
 
@@ -10,7 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import junit.framework.TestCase;
-import junit.framework.TestSuite;
 
 public class RomanNumeralTestCase extends TestCase {
 	
@@ -27,8 +24,17 @@ public class RomanNumeralTestCase extends TestCase {
 		
 		RomanNumeral rn = new RomanNumeral(1, 3999);
 		
+		
+		//first make sure our target range is correct
+		assertEquals("-1", rn.generate(4000));
+		assertEquals("-1", rn.generate(-400));
+		assertEquals("-1", rn.generate(0));
+		
+		
+		//then ensure that all values are correct to the testing data supplied
 		for(CSVRecord record : this.roman_numerals_csv)
 		{
+			System.out.println(record.getRecordNumber());
 			//params: msg, expected, actual
 			assertEquals(record.get("number") + " is " + record.get("roman_numeral") + " in roman numerals.",
 							record.get("roman_numeral"), 

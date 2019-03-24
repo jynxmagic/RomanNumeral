@@ -37,11 +37,10 @@
 	    <version>1.6</version>
 	</dependency>
 	<dependency>
-	    <groupId>com.frequal.romannumerals</groupId>
-	    <artifactId>roman-numerals</artifactId>
-	    <version>1.0</version>
+	    <groupId>com.github.fracpete</groupId>
+	    <artifactId>romannumerals4j</artifactId>
+	    <version>0.0.1</version>
 	</dependency>
-
   </dependencies>
   
   
