@@ -25,7 +25,7 @@ public class RomanNumeralTestCase extends TestCase {
 	@Test
 	public void testGenerate() {
 		
-		RomanNumeral rn = new RomanNumeral();
+		RomanNumeral rn = new RomanNumeral(1, 3999);
 		
 		for(CSVRecord record : this.roman_numerals_csv)
 		{

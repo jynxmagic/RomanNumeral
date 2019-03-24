@@ -13,6 +13,16 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+  
+  
+    <repositories>
+  	<repository>
+        <id>maven-edu</id>
+        <name>Additional Public Maven Artifactory Repository</name>
+        <url>http://maven.icm.edu.pl/artifactory/repo/</url>
+    </repository>
+  </repositories>
+  
 
   <dependencies>
     <dependency>
@@ -26,6 +36,14 @@
 	    <artifactId>commons-csv</artifactId>
 	    <version>1.6</version>
 	</dependency>
-    
+	<dependency>
+	    <groupId>com.frequal.romannumerals</groupId>
+	    <artifactId>roman-numerals</artifactId>
+	    <version>1.0</version>
+	</dependency>
+
   </dependencies>
+  
+  
+
 </project>

@@ -23,7 +23,7 @@ public class App
     	
     	int number = (Integer) ((mt == ModeType.GUI) ? askForNumber() : args[0]); //retrieve number from either the CLI or the GUI. TODO: VALIDATE CLI INPUT
 
-        RomanNumeral rn = new RomanNumeral();
+        RomanNumeral rn = new RomanNumeral(minRange, maxRange);
         
         String romanNumeral = rn.generate(number);
         
