@@ -9,7 +9,10 @@ import org.apache.commons.csv.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class RomanNumeralTestCase {
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+
+public class RomanNumeralTestCase extends TestCase {
 	
 	private CSVParser roman_numerals_csv;
 
@@ -31,8 +34,6 @@ public class RomanNumeralTestCase {
 							record.get("roman_numeral"), 
 					      	rn.generate(Integer.parseInt(record.get("number"))));
 		}
-			fail("Not yet implemented"); // TODO
-
 	}
 
 }
