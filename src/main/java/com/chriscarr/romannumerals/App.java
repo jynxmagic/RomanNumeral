@@ -21,7 +21,7 @@ public class App
     	mt = ((args.length == 0) ? ModeType.GUI: ModeType.CLI); //if param is passed through the program was started with cli. created enums for readability
     	
     	
-    	int number = (Integer) ((mt == ModeType.GUI) ? askForNumber() : validateInput(args[0])); //retrieve number from either the CLI or the GUI. TODO: VALIDATE CLI INPUT
+    	int number = (Integer) ((mt == ModeType.GUI) ? askForNumber() : validateInput(args[0])); //retrieve number from either the CLI or the GUI.
 
         RomanNumeral rn = new RomanNumeral(minRange, maxRange);
         
@@ -33,9 +33,15 @@ public class App
         
     }
 
-    
-    private static int validateInput(String string) {
-		// TODO Auto-generated method stub
+    /**
+     * 
+     * @param string usually passed from the command line initialization of the program as a parameter
+     * @return integer between 1 & 3999
+     */
+    private static int validateInput(String string) 
+    {
+		//number passed from cli
+    	
     	int number = 0;
     	try
     	{
@@ -50,7 +56,7 @@ public class App
     	
     	if(number < minRange || number > maxRange)
     	{
-    		System.out.println("Number is outside of range.");
+    		System.out.println("Number is outside of range. Range is 1-3999");
     		System.exit(0);
     	}
     	
@@ -60,9 +66,10 @@ public class App
 
 	/**
      * 
-     * @return int between 1 & 3999
+     * @return integer between 1 & 3999
      */
-	private static int askForNumber() {
+	private static int askForNumber() 
+	{
 		
 		String enterText = "Please enter an integer betweem "+minRange+" & "+maxRange+": ";
 		

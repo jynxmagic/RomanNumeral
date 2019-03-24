@@ -4,7 +4,7 @@ import com.github.fracpete.romannumerals4j.RomanNumeralFormat;
 
 public class RomanNumeral implements RomanNumeralInterface {
 	
-	RomanNumeralFormat converter; //library allows for public use with GNU license. See: http://frequal.com/RomanNumerals/index.html
+	RomanNumeralFormat converter; //library allows for public use with Creative commons license. See: https://github.com/fracpete/romannumerals4j/blob/master/LICENSE.txt
 	int minRange;
 	int maxRange;
 	
@@ -15,6 +15,11 @@ public class RomanNumeral implements RomanNumeralInterface {
 		this.maxRange = maxRange;
 	}
 
+	/**
+	 * 
+	 * @param number between 1 & 3999
+	 * @return String of Roman Numerals
+	 */
 	public String generate(int number) 
 	{
 		String romanNumerals = null;

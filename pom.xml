@@ -15,13 +15,35 @@
   </properties>
   
   
-    <repositories>
-  	<repository>
-        <id>maven-edu</id>
-        <name>Additional Public Maven Artifactory Repository</name>
-        <url>http://maven.icm.edu.pl/artifactory/repo/</url>
-    </repository>
-  </repositories>
+	<build>
+	<plugins>
+	  <plugin>
+	     <groupId>org.apache.maven.plugins</groupId>
+	     <artifactId>maven-assembly-plugin</artifactId>
+	     <version>3.1.0</version>
+	     <executions>
+		    <execution>
+		      <phase>package</phase>
+		      <goals>
+		        <goal>single</goal>
+		      </goals>
+		    </execution>
+		 </executions>
+	     <configuration>
+	       <archive>
+	         <manifest>
+	           <addClasspath>true</addClasspath>
+	           <classpathPrefix>lib/</classpathPrefix>
+	           <mainClass>com.chriscarr.romannumerals.App</mainClass>
+	         </manifest>
+	       </archive>
+	        <descriptorRefs>
+		      <descriptorRef>jar-with-dependencies</descriptorRef>
+		    </descriptorRefs>
+	     </configuration>
+	   </plugin>
+	 </plugins>
+	</build>
   
 
   <dependencies>
