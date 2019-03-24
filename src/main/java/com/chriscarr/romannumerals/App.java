@@ -21,7 +21,7 @@ public class App
     	mt = ((args.length == 0) ? ModeType.GUI: ModeType.CLI); //if param is passed through the program was started with cli. created enums for readability
     	
     	
-    	int number = (Integer) ((mt == ModeType.GUI) ? askForNumber() : args[0]); //retrieve number from either the CLI or the GUI. TODO: VALIDATE CLI INPUT
+    	int number = (Integer) ((mt == ModeType.GUI) ? askForNumber() : validateInput(args[0])); //retrieve number from either the CLI or the GUI. TODO: VALIDATE CLI INPUT
 
         RomanNumeral rn = new RomanNumeral(minRange, maxRange);
         
@@ -34,7 +34,31 @@ public class App
     }
 
     
-    /**
+    private static int validateInput(String string) {
+		// TODO Auto-generated method stub
+    	int number = 0;
+    	try
+    	{
+    		number = Integer.parseInt(string);
+    	}
+    	catch(Exception e)
+    	{
+    		System.out.println("Problem occured while translating number");
+    		e.printStackTrace();
+    		System.exit(0);
+    	}
+    	
+    	if(number < minRange || number > maxRange)
+    	{
+    		System.out.println("Number is outside of range.");
+    		System.exit(0);
+    	}
+    	
+		return number;
+	}
+
+
+	/**
      * 
      * @return int between 1 & 3999
      */
