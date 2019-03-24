@@ -34,7 +34,6 @@ public class RomanNumeralTestCase extends TestCase {
 		//then ensure that all values are correct to the testing data supplied
 		for(CSVRecord record : this.roman_numerals_csv)
 		{
-			System.out.println(record.getRecordNumber());
 			//params: msg, expected, actual
 			assertEquals(record.get("number") + " is " + record.get("roman_numeral") + " in roman numerals.",
 							record.get("roman_numeral"), 
