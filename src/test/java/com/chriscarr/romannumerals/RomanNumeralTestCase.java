@@ -7,31 +7,44 @@ import org.apache.commons.csv.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.chriscarr.romannumerals.exception.IntegerOutOfBoundsException;
+
 import junit.framework.TestCase;
 
 public class RomanNumeralTestCase extends TestCase {
 	
 	private CSVParser roman_numerals_csv;
+	private RomanNumeral rn;
 
 	@Before
 	public void setUp() throws Exception {
 		Reader file = new FileReader("src/test/java/com/chriscarr/romannumerals/roman_numerals_test_data.csv");
 		this.roman_numerals_csv = CSVFormat.EXCEL.withHeader().parse(file);
+		this.rn = new RomanNumeral(1, 3999);
 	}
 
 	@Test
-	public void testGenerate() {
-		
-		RomanNumeral rn = new RomanNumeral(1, 3999);
-		
-		
+	public void testGenerate()
+	{
 		//first make sure our target range is correct
-		assertEquals("-1", rn.generate(4000));
-		assertEquals("-1", rn.generate(-400));
-		assertEquals("-1", rn.generate(0));
+		this.testOutOfBounds();
 		
-		
-		//then ensure that all values are correct to the testing data supplied
+		//second, test that all correct input values match correct output values
+		this.testArabicToRomanConversion();
+	}
+	
+	@Test(expected = IntegerOutOfBoundsException.class)
+	public void testOutOfBounds()
+	{
+		assertEquals(null, rn.generate(4000));
+		assertEquals(null, rn.generate(-400));
+		assertEquals(null, rn.generate(0));
+	}
+	
+	@Test
+	public void testArabicToRomanConversion()
+	{
+		//iterate over csv and ensure arabic values 1-3999 return the coresponding roman value
 		for(CSVRecord record : this.roman_numerals_csv)
 		{
 			//params: msg, expected, actual
