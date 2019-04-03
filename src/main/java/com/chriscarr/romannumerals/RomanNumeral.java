@@ -4,9 +4,22 @@ import com.chriscarr.romannumerals.exception.IntegerOutOfBoundsException;
 
 public class RomanNumeral implements RomanNumeralInterface {
 	
+
 	int minRange;
+
 	int maxRange;
 	
+	private final String[][] numerals = {
+			{"", "M", "MM", "MMM"},
+			{"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"},
+			{"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"},
+			{"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"}
+	};
+	
+	/**
+	 * @param minRange
+	 * @param maxRange
+	 */
 	RomanNumeral(int minRange, int maxRange)
 	{
 		this.minRange = minRange;
@@ -22,24 +35,42 @@ public class RomanNumeral implements RomanNumeralInterface {
 	{
 		if(number > maxRange || number < minRange)
 		{
+			// throw exception if the given value is outside of range.
+			// exception is thrown with try/catch so as to not change the provided interface, 
+			// in case other team members are working with this interface
 			try 
 			{
 				throw new IntegerOutOfBoundsException(number);
 			}
 			catch (IntegerOutOfBoundsException e) 
 			{
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} 
+			return null;
 		}
 	    return this.convertToRoman(number);
 	}
 	
+	/**
+	 * @param Integer arabic
+	 * @return String
+	 */
 	private String convertToRoman(int arabic)
 	{
+		int remainder = arabic;
 		
+		String romanNumeral = "";
 		
-		return null;
+		int j = 1000;
+		
+		for(int i = 0; i < numerals.length; i++)
+		{
+			romanNumeral += numerals[i][(int)Math.floor(remainder/j)];
+			remainder %= j;
+			j /= 10;
+		}
+		
+		return romanNumeral;
 	}
 
 }
