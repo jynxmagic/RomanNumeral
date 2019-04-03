@@ -21,7 +21,17 @@ public class App
     	mt = ((args.length == 0) ? ModeType.GUI: ModeType.CLI); //if param is passed through the program was started with cli. created enums for readability
     	
     	
-    	int number = (Integer) ((mt == ModeType.GUI) ? askForNumber() : validateInput(args[0])); //retrieve number from either the CLI or the GUI.
+    	Validator validator = new Validator(minRange, maxRange); // we use this class to check argv input
+    	
+    	int number = 1;
+		try 
+		{
+			number = (Integer) ((mt == ModeType.GUI) ? askForNumber() : validator.validateInput(args[0])); //retrieve number from either the CLI or the GUI.
+		} 
+		catch (Exception e) 
+		{
+			e.printStackTrace();
+		} 
 
         RomanNumeral rn = new RomanNumeral(minRange, maxRange);
         
@@ -32,36 +42,6 @@ public class App
         System.out.print("The Roman Numeral of "+number+" is "+romanNumeral);
         
     }
-
-    /**
-     * 
-     * @param string usually passed from the command line initialization of the program as a parameter
-     * @return integer between 1 & 3999
-     */
-    private static int validateInput(String string) 
-    {
-		//number passed from cli
-    	
-    	int number = 0;
-    	try
-    	{
-    		number = Integer.parseInt(string);
-    	}
-    	catch(Exception e)
-    	{
-    		System.out.println("Problem occured while translating number");
-    		e.printStackTrace();
-    		System.exit(0);
-    	}
-    	
-    	if(number < minRange || number > maxRange)
-    	{
-    		System.out.println("Number is outside of range. Range is 1-3999");
-    		System.exit(0);
-    	}
-    	
-		return number;
-	}
 
 
 	/**
